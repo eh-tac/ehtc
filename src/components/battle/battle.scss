@@ -1,0 +1,34 @@
+@import "~@ionic/core/css/core.css";
+@import "../../style/theme.scss";
+@import "~@ionic/core/css/normalize.css";
+@import "~@ionic/core/css/structure.css";
+@import "~@ionic/core/css/typography.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/core/css/padding.css";
+@import "~@ionic/core/css/float-elements.css";
+@import "~@ionic/core/css/text-alignment.css";
+@import "~@ionic/core/css/text-transformation.css";
+@import "~@ionic/core/css/flex-utils.css";
+@import "~@ionic/core/css/display.css";
+
+:host {
+  ion-list {
+    display: none;
+  }
+  .info .info,
+  .reviews .reviews,
+  .bugs .bugs,
+  .scores .scores,
+  .stats .stats {
+    display: block;
+  }
+
+  ion-list.reviews p.review {
+    white-space: pre-line;
+  }
+
+  ion-button.download {
+    width: 100%;
+  }
+}

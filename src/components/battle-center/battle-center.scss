@@ -1,0 +1,48 @@
+@import "~@ionic/core/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/core/css/normalize.css";
+@import "~@ionic/core/css/structure.css";
+@import "~@ionic/core/css/typography.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/core/css/padding.css";
+@import "~@ionic/core/css/float-elements.css";
+@import "~@ionic/core/css/text-alignment.css";
+@import "~@ionic/core/css/text-transformation.css";
+@import "~@ionic/core/css/flex-utils.css";
+@import "~@ionic/core/css/display.css";
+
+@import "../../style/theme.scss";
+
+:host {
+  // background-color: var(--ion-background-color);
+  display: block;
+  position: relative;
+
+  ion-card-header {
+    --background: maroon;
+    ion-card-title {
+      --color: #eee;
+    }
+  }
+
+  ion-grid.platforms {
+    ion-col {
+      ion-button {
+        box-shadow: 1px 1px 5px 1px rgba(256, 256, 256, 0.3);
+      }
+
+      &.twin {
+        ion-button.half {
+          width: calc(50% - 4px);
+        }
+      }
+    }
+  }
+
+  ion-list ion-note.code {
+    min-width: 100px;
+    font-size: 15px;
+  }
+}
