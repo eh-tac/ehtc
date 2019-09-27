@@ -1,4 +1,12 @@
-import { Component, h, Prop, State, Listen, Event, EventEmitter } from "@stencil/core";
+import {
+  Component,
+  h,
+  Prop,
+  State,
+  Listen,
+  Event,
+  EventEmitter
+} from "@stencil/core";
 import { JSX } from "../../components";
 import { Battle, Review, Bug, Score } from "../../model/battle";
 import { SegmentChangeEventDetail } from "@ionic/core";
@@ -68,19 +76,28 @@ export class BattleComponent {
     return (
       <ion-list class="info">
         <ion-list-header>
-          <ion-label>Details</ion-label>
+          <ion-label class="item">Details</ion-label>
         </ion-list-header>
-        {Object.entries(fields).map((value: [string, string]) => this.renderItem(value[0], value[1]))}
+        {Object.entries(fields).map((value: [string, string]) =>
+          this.renderItem(value[0], value[1])
+        )}
         <ion-list-header>
-          <ion-label>Creators</ion-label>
+          <ion-label class="item">Creators</ion-label>
         </ion-list-header>
-        {this.battle.creators.map((value: PilotSummary) => this.renderItem(value.PIN, value.label))}
+        {this.battle.creators.map((value: PilotSummary) =>
+          this.renderItem(value.PIN, value.label)
+        )}
         <ion-list-header>
-          <ion-label>Patches</ion-label>
+          <ion-label class="item">Patches</ion-label>
         </ion-list-header>
         {this.battle.patches.map((value: string) => this.renderItem("", value))}
         <ion-item>
-          <ion-button expand="full" color="secondary" class="download" onClick={this.download.bind(this)}>
+          <ion-button
+            expand="full"
+            color="secondary"
+            class="download"
+            onClick={this.download.bind(this)}
+          >
             Download
           </ion-button>
         </ion-item>
@@ -149,7 +166,11 @@ export class BattleComponent {
     );
   }
 
-  private renderItem(key: string | number, value: string | number, className?: string): JSX.IntrinsicElements {
+  private renderItem(
+    key: string | number,
+    value: string | number,
+    className?: string
+  ): JSX.IntrinsicElements {
     return (
       <ion-item class={className}>
         <ion-note slot="start" color="light" class="ion-padding-end">
