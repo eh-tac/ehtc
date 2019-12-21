@@ -18,6 +18,7 @@ export namespace Components {
   interface EhtcBattleCenter {}
   interface EhtcPilot {
     'pin': number;
+    'secondary': boolean;
   }
 }
 
@@ -57,6 +58,7 @@ declare namespace LocalJSX {
   interface EhtcBattleCenter extends JSXBase.HTMLAttributes<HTMLEhtcBattleCenterElement> {}
   interface EhtcPilot extends JSXBase.HTMLAttributes<HTMLEhtcPilotElement> {
     'pin'?: number;
+    'secondary'?: boolean;
   }
 
   interface IntrinsicElements {

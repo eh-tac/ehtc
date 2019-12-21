@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `pin`    | `pin`     |             | `number` | `undefined` |
+| Property    | Attribute   | Description | Type      | Default     |
+| ----------- | ----------- | ----------- | --------- | ----------- |
+| `pin`       | `pin`       |             | `number`  | `undefined` |
+| `secondary` | `secondary` |             | `boolean` | `undefined` |
 
 
 ----------------------------------------------

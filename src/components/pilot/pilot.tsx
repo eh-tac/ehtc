@@ -9,6 +9,7 @@ import { Pilot } from "../../model/pilot";
 })
 export class PilotComponent {
   @Prop() pin: number;
+  @Prop() secondary: boolean;
   @State() data: Pilot;
 
   public componentWillLoad(): void {
@@ -20,7 +21,26 @@ export class PilotComponent {
   }
 
   private get rankImg(): string {
-    return `${Config.ROOT}${this.data.rankImage}`;
+    const rank = this.secondary
+      ? this.data.secondary.rankImage
+      : this.data.rankImage;
+    return `${Config.ROOT}${rank}`;
+  }
+
+  private get rank(): string {
+    return this.secondary ? this.data.secondary.rank : this.data.rank;
+  }
+
+  private get IDLine(): string {
+    return this.secondary ? this.data.secondary.IDLine : this.data.IDLine;
+  }
+
+  private get extraLine(): string {
+    return this.secondary
+      ? this.data.IDLine
+      : this.data.secondary
+      ? this.data.secondary.IDLine
+      : "";
   }
 
   private get fchgImg(): string {
@@ -31,8 +51,10 @@ export class PilotComponent {
   private loadPilot(): void {
     this.data = undefined;
     fetch(this.pilotUrl)
-      .then((res) => res.json())
-      .then((pilot: Pilot) => (this.data = pilot));
+      .then(res => res.json())
+      .then((pilot: Pilot) => {
+        this.data = pilot;
+      });
   }
 
   public render() {
@@ -48,10 +70,11 @@ export class PilotComponent {
       <div class="wrapper">
         <div class="left">
           <img src={this.rankImg} class="rank" />
-          <span class="subtitle rank">{this.data.rank}</span>
+          <span class="subtitle rank">{this.rank}</span>
           <img src={this.fchgImg} class="fchg" />
           <span class="subtitle fchg">
-            {this.data.FCHG.label} <span class="total">({this.data.FCHG.total})</span>
+            {this.data.FCHG.label}{" "}
+            <span class="total">({this.data.FCHG.total})</span>
           </span>
         </div>
         <div class="right">
@@ -60,7 +83,7 @@ export class PilotComponent {
             <span class="pin">#{this.data.PIN}</span>
           </div>
           <p class="id">{this.data.IDLine}</p>
-          <p class="id">{this.data.secondary ? this.data.secondary.IDLine : ""}</p>
+          <p class="id">{this.extraLine}</p>
         </div>
       </div>
     );
